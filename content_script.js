@@ -29,19 +29,26 @@ function hideElements() {
     }
 }
 
-// Run the hiding function when the DOM is fully loaded
-window.addEventListener('DOMContentLoaded', hideElements);
+// Run the hiding function and initialize MutationObserver when the DOM is fully loaded
+window.addEventListener('DOMContentLoaded', () => {
+    hideElements(); // Initial hiding of elements
 
-// Also, use a MutationObserver to detect and hide elements that are
-// dynamically added to the page after initial load.
-const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-        if (mutation.addedNodes.length > 0) {
-            hideElements(); // Re-run hideElements when new nodes are added
-        }
+    // Also, use a MutationObserver to detect and hide elements that are
+    // dynamically added to the page after initial load.
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.addedNodes.length > 0) {
+                hideElements(); // Re-run hideElements when new nodes are added
+            }
+        });
     });
-});
 
-// Start observing the entire document body for changes
-// { childList: true, subtree: true } means observe direct children and their descendants
-observer.observe(document.body, { childList: true, subtree: true });
+    // Start observing the entire document body for changes
+    // { childList: true, subtree: true } means observe direct children and their descendants
+    // We check if document.body exists, though DOMContentLoaded should ensure it.
+    if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+    } else {
+        console.warn("My Simple AdBlocker: document.body not found for MutationObserver.");
+    }
+});
