@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AdBlocker Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            width: 400px;
+            margin: auto;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .setting-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #statusMessage {
+            margin-top: 15px;
+            text-align: center;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AdBlocker Settings</h1>
+
+    <div class="setting-item">
+        <label>
+            <input type="checkbox" id="blockTrackersCheckbox"> Block Web Trackers
+        </label>
+        <p style="font-size: 0.85em; color: #777;">Enable to block common web tracking scripts and cookies.</p>
+    </div>
+
+    <div class="setting-item">
+        <label>
+            <input type="checkbox" id="allowNonIntrusiveAdsCheckbox"> Allow Non-Intrusive Ads (Work in progress)
+        </label>
+        <p style="font-size: 0.85em; color: #777;">This feature is not yet implemented. Would allow some ads based on
+            criteria.</p>
+    </div>
+
+    <button id="saveOptions">Save Settings</button>
+    <div id="statusMessage"></div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>
